@@ -12605,7 +12605,10 @@ I believe the most appropriate models to solve this problem are <b>LogisticRegre
 <li>Cannot predict continuous outcomes <br/></li>
 <li>It predict outcomes based on a set of independent features, but if we include the wrong independent features, the model will have little to no predictive value.</li>
 </ul>
-<h4 id="What-makes-it-a-good-candidate">What makes it a good candidate<a class="anchor-link" href="#What-makes-it-a-good-candidate">&#182;</a></h4><p>To start with as a generalized benchmark model and explore more complex models from this.</p>
+<h4 id="What-makes-it-a-good-candidate">What makes it a good candidate<a class="anchor-link" href="#What-makes-it-a-good-candidate">&#182;</a></h4><ul>
+<li>To start with as a generalized benchmark model and explore more complex models from this.</li>
+<li>As we are solving a binary classification problem and dataset is very clean i would like to select logistic regression as one   of the models as it can give us good results in current circumstances.</li>
+</ul>
 <h3 id="Support-Vector-Machines">Support Vector Machines<a class="anchor-link" href="#Support-Vector-Machines">&#182;</a></h3><h4 id="Real-world-application">Real-world application<a class="anchor-link" href="#Real-world-application">&#182;</a></h4><p>The benefit of SVM's typically comes from using non-linear kernels to model non-linear decision boundaries. We use SVMs to recognize handwritten characters</p>
 <h4 id="Strength">Strength<a class="anchor-link" href="#Strength">&#182;</a></h4><ul>
 <li>SVM's can model non-linear decision boundaries, and there are many parameters like kernels, Gamma and C can choose to avoid overfitting</li>
@@ -12613,20 +12616,25 @@ I believe the most appropriate models to solve this problem are <b>LogisticRegre
 </ul>
 <h4 id="Weakness">Weakness<a class="anchor-link" href="#Weakness">&#182;</a></h4><ul>
 <li>SVM's are memory and time intensive</li>
-<li>don't scale well to larger datasets
-#### What makes it a good candidate: 
-We have 103 total features after one-hot encoding, those are moderately high. SVMs are very effective for high-dimensional problems like this. </li>
+<li>don't scale well to larger datasets</li>
+</ul>
+<h4 id="What-makes-it-a-good-candidate:">What makes it a good candidate:<a class="anchor-link" href="#What-makes-it-a-good-candidate:">&#182;</a></h4><ul>
+<li>We have 103 total features after one-hot encoding, those are moderately high. SVMs are very effective for high-dimensional   problems like this. </li>
+<li>Model could be a good candidate as there seems to be some features in the data that can more clearly defined in terms of       boundary</li>
 </ul>
 <h3 id="AdaBoostClassifier">AdaBoostClassifier<a class="anchor-link" href="#AdaBoostClassifier">&#182;</a></h3><h4 id="Real-world-application">Real-world application<a class="anchor-link" href="#Real-world-application">&#182;</a></h4><p>Ada Boosting is best used to boost the performance for classifer model. It is used for  Face recoginzation to classify parts of the image as a face and non-face areas.</p>
 <h4 id="Strength">Strength<a class="anchor-link" href="#Strength">&#182;</a></h4><ul>
 <li>Adaboost is that it is a fast algorithm, we have seen the same in Question 2</li>
 <li>agnostic to the classifier, we can provide run time classifier model </li>
 <li>less prone to overfitting</li>
-<li>faster then SVM
-#### Weakness</li>
-<li>AdaBoost can be sensitive to noisy data and outliers.
-#### What makes it a good candidate
-This model is a good candidate for the problem as our dataset is large and moderate features. We will be able to perform multiple quick trainining iterations to maximize our overall accuracy.</li>
+<li>faster then SVM</li>
+</ul>
+<h4 id="Weakness">Weakness<a class="anchor-link" href="#Weakness">&#182;</a></h4><ul>
+<li>AdaBoost can be sensitive to noisy data and outliers.</li>
+</ul>
+<h4 id="What-makes-it-a-good-candidate">What makes it a good candidate<a class="anchor-link" href="#What-makes-it-a-good-candidate">&#182;</a></h4><ul>
+<li>This model is a good candidate for the problem as our dataset is large and moderate features. We will be able to perform         multiple quick trainining iterations to maximize our overall accuracy.</li>
+<li>This model is a good candidate for the problem as our dataset is moderately large yet clean. Therefore we will be able to       perform multiple quick trainining iterations to maximize our overall accuracy on the testing data</li>
 </ul>
 
 </div>
@@ -12868,6 +12876,15 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <li>prediction/training time</li>
 <li>the algorithm's suitability for the data.</li>
 </ul>
+<h2 id="Answer:">Answer:<a class="anchor-link" href="#Answer:">&#182;</a></h2><p>Prediction/training time:</p>
+<p>First, we will discuss about the prediction/training time of the models. By far, the model which has the longest time metrics is the SVM model. This can be a problem with applications that need bigger datasets and need fast training and prediction time. In addition to that, the SVM model didn't show us accuracy and f-score metrics that justify choosing it. So, we are not considering the SVMs for the final model selection.</p>
+<p>Algorithm's suitability for the data:</p>
+<p>Next, we will discuss about the algorithm's suitability for the data and the problem, considering only the Adaboost model and the Logistic Regression model.</p>
+<p>The Adaboost model is an Ensemble Method, which by default uses the Decision Tree Classifier as weak learner. It uses multiple simple Decision Tree Classifiers in order to construct a single robust classifier. So, the Adaboost model has a certain intuition about the classification of the features, while it uses multiple rules in order to choose a class as output.</p>
+<p>The Logistic Regression model has a nice probabilistic interpretation, which can be very intuitive to solve and explain some kinds of problems. Here, we have a problem which can be thought of as predicting the PROBABILITY of the individual making more than 50k, instead of STATING that the individual really makes more than 50k. It makes sense to think about this problem as a probabilistic one, as opposed by a more deterministic problem, like the iris flower classification problem.</p>
+<p>So, we still need the last discussion to make a decision about the chosen model.</p>
+<p>F score</p>
+<p>Finally, we will discuss the output metrics for the Adaboost and the Logistic Regression models. As we can see from the visualization above, the Adaboost model (with default settings) outputs a higher F score for this dataset than the Logistic Regression model (also with default settings). So, the Adaboost model will be the chosen one.</p>
 
 </div>
 </div>
@@ -13167,14 +13184,23 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> 
-The AdaBoostClassifier is one of the way to implment Boosting. Boosting is a technique where multiple weak learner result into smart and strong learner. The process is as following:</p>
-<p>1) AdaBoost is a Ensemble classifier. Ensemble classifier are made up of multiple classifier algorithms and      whose output is combined result of output of those classifier algorithms.</p>
-<p>2) Ada-boost classifier combines weak classifier algorithm to form strong classifier.</p>
-<p>3) This model is trained iteratively, in each training iteration, the model attempts to correctly classify the    training data and  assigns initial weight for these training data set and start the learning process.</p>
-<p>4) In each iteration It assigns the higher weight to wrong classified observations from previous iteration so    that in the next learner will focus more on these data points and try to classify right</p>
-<p>5) On the next training iteration, the algorithm focuses on those more complex, initially missclassified          observations, and tries to classify them correctly.</p>
-<p>This process is repeated for a number of iterations defined by the user in an attempt to find the set of weighted hypotheses.</p>
-<p>It will combine all weak learner and create final strong learner. one of the combining process can be based on  logarithmic value of(sum of correct data points weight/sum of incorrect data points weight).</p>
+The main idea of the AdaBoost classifier model is to create many "weak learners" as very simple classifiers and put them together in order to generate a strong classifier model.</p>
+<p>The weak learners are small and very simple classifiers which are trained with the dataset and generate conditions in order to classify the data as belonging to one class (people who make less than or equal to 50K) or another class (people who make more than 50K).</p>
+<p>The weak learners in this case are very simple Decision Tree Classifiers. These classifiers are base on a "if-else-then" statement, which asks if the data satisfies a condition. If the data satisfies the condition, then it belongs to one class. If the data do not satisfies the condition, then it belongs to another class. For example:</p>
+<ul>
+<li>If my data is greater than 18, then it is an adult</li>
+<li>Else it is a child
+The example above is a decision tree which has only one condition. We say that it makes 1 split.</li>
+</ul>
+<p>The Decision Tree Classifiers used within our chosen AdaBoost model are very simple classifiers because they make only 1 split.</p>
+<p>The algorithm consists of:</p>
+<ul>
+<li>The first weak learner is trained with a random subset of the data, and generates a decision boundary with errors.</li>
+<li>These errors will be "punished" in order to generate a better weak learner next time.</li>
+<li>The next weak learner is trained with another random subset of the data, generating another decision bounday with errors.</li>
+<li>The algorithm repeats this process until it gets all the weak learners.</li>
+<li>Finally, the model recalls all the weak learners that were generated and make them vote for the input data </li>
+</ul>
 
 </div>
 </div>
